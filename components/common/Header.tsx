@@ -13,7 +13,7 @@ import Octicons from "@expo/vector-icons/Octicons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Sidebar from "../navigation/Sidebar";
 import Sidebardata from "../../data/navigation.json";
-import SearchBar from "./SearchBar";
+import SearchBar from "../home/SearchBar";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
