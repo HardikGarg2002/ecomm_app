@@ -4,62 +4,35 @@ import {
   Text,
   Image,
   FlatList,
-  TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Pressable,
 } from "react-native";
-// import axios from 'axios';
 
 const { width } = Dimensions.get("window");
-const ShopByCategory = () => {
+const ShopByCategory = ({ inputCategory }: any) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     // Fetch categories from the backend when the component mounts
     const fetchCategories = async () => {
       try {
-        // const response = await axios.get(
-        //   'https://itpl-fp-dev.up.railway.app/api/categories',
-        // ); // Replace with your API endpoint
-        // setCategories(response.data);
-        const categories: any = [
-          {
-            _id: 1,
-            title: "Flowers",
-            img_url:
-              "https://itpl-fp-ui-dev.up.railway.app/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0684%2F7433%2F9577%2Fproducts%2Fbouquet-of-pink-roses_1_678a360b-0e83-4e84-8ad2-5f5dfee5b2b5.jpg%3Fv%3D1709916070&w=640&q=75",
-          },
-          {
-            _id: 2,
-            title: "Cakes",
-            img_url:
-              "https://itpl-fp-ui-dev.up.railway.app/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0684%2F7433%2F9577%2Fproducts%2Fbouquet-of-pink-roses_1_678a360b-0e83-4e84-8ad2-5f5dfee5b2b5.jpg%3Fv%3D1709916070&w=640&q=75",
-          },
-          {
-            _id: 3,
-            title: "Gifts",
-            img_url:
-              "https://itpl-fp-ui-dev.up.railway.app/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0684%2F7433%2F9577%2Fproducts%2Fbouquet-of-pink-roses_1_678a360b-0e83-4e84-8ad2-5f5dfee5b2b5.jpg%3Fv%3D1709916070&w=640&q=75",
-          },
-          {
-            _id: 4,
-            title: "Plants",
-            img_url:
-              "https://itpl-fp-ui-dev.up.railway.app/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0684%2F7433%2F9577%2Fproducts%2Fbouquet-of-pink-roses_1_678a360b-0e83-4e84-8ad2-5f5dfee5b2b5.jpg%3Fv%3D1709916070&w=640&q=75",
-          },
-        ];
-        setCategories(categories);
+        const categoryInfo = await fetch(
+          "https://itpl-fp-dev.up.railway.app/api/categories"
+        );
+        const categoriesJson = await categoryInfo.json();
+        console.log("fetch categories called");
+        setCategories(categoriesJson);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
     };
-
-    fetchCategories();
+    inputCategory ? setCategories(inputCategory) : fetchCategories();
   }, []);
 
   // Function to render each category item
   const renderCategoryItem = ({ item }: any) => (
-    <TouchableOpacity style={styles.categoryItem}>
+    <Pressable style={styles.categoryItem}>
       <Image
         source={{
           uri:
@@ -69,7 +42,7 @@ const ShopByCategory = () => {
         style={styles.categoryImage}
       />
       <Text style={styles.categoryText}>{item.title}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 
   return (
@@ -77,7 +50,7 @@ const ShopByCategory = () => {
       <FlatList
         data={categories}
         renderItem={renderCategoryItem}
-        keyExtractor={(item: any) => item._id!.toString()}
+        keyExtractor={(item: any) => item._id.toString()}
         horizontal // Enables horizontal scrolling
         showsHorizontalScrollIndicator={false} // Hide the scrollbar
         pagingEnabled // Enable snapping to each category
@@ -92,7 +65,6 @@ const ShopByCategory = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 14,
     paddingVertical: 8,
     backgroundColor: "white",
   },
