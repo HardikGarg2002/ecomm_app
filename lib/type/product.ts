@@ -1,17 +1,17 @@
 export interface IProduct {
   _id: string;
-  title: string;
-  slug: string;
-  brand_category: string;
-  breadcrumb_category: string;
-  sku: string;
-  sales_discontinuation_date: string;
-  details: string;
-  care_instructions: string;
-  delivery_info: string;
-  add_ons: string[];
-  variants: string[];
-  also_bought: string[];
+  title?: string;
+  slug?: string;
+  brand_category?: string;
+  breadcrumb_category?: string;
+  sku?: string;
+  sales_discontinuation_date?: string;
+  details?: string;
+  care_instructions?: string;
+  delivery_info?: string;
+  add_ons?: string[];
+  variants?: string[];
+  also_bought?: string[];
   features?: {
     FLAVOUR: string[];
     INGREDIENT: string[];
@@ -24,16 +24,16 @@ export interface IProduct {
     PHOTO_UPLOAD: string[];
     WEIGHT: string[];
   };
-  variant_products: variant_product[];
-  default_price: number;
-  list_price: number;
-  display_tags: string[];
-  inventory: {
+  variant_products?: variant_product[];
+  default_price?: number;
+  list_price?: number;
+  display_tags?: string[];
+  inventory?: {
     quantity_on_hand: string;
     quantity_available: string;
   };
-  images: string[];
-  videos: string[];
+  images?: string[];
+  videos?: string[];
 }
 
 export enum FeatureKey {
