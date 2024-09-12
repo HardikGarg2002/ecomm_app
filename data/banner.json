@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Premium Valentine Gifts just for you",
+        "description": "Elite gifts to wow your sweetheart and make their day extra special!",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0741/2259/2535/files/graduation_english_3.jpg?v=1715935755",
+        "link": "https://example.com/shop/valentine"
+    },
+    {
+        "id": 2,
+        "title": "Birthday Surprise",
+        "description": "Special gifts to make their birthdays memorable!",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0741/2259/2535/files/English_hajj_Dsite.jpg?v=1718992826",
+        "link": "https://example.com/shop/birthday"
+    },
+    {
+        "id": 3,
+        "title": "Wedding Collection",
+        "description": "Elegant gifts to celebrate the big day!",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0741/2259/2535/files/Dsite-_English_biirthday_1.jpg?v=1715935755",
+        "link": "https://example.com/shop/wedding"
+    }
+]
