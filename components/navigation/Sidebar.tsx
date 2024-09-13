@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  StyleSheet,
-} from "react-native";
+import { View, Text, Pressable, FlatList, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons"; // Assuming you're using Expo, or install `react-native-vector-icons` for arrow icons
 import { INavigation } from "@/lib/type/navigation";
 
@@ -18,9 +12,9 @@ const Sidebar = ({ data }: { data: INavigation[] }) => {
 
   const renderItems = (items: any) => {
     return items.map((item: any) => (
-      <TouchableOpacity key={item.url} style={styles.itemContainer}>
+      <Pressable key={item.url} style={styles.itemContainer}>
         <Text style={styles.itemText}>{item.label}</Text>
-      </TouchableOpacity>
+      </Pressable>
     ));
   };
 
@@ -29,12 +23,12 @@ const Sidebar = ({ data }: { data: INavigation[] }) => {
 
     return (
       <View style={styles.sectionContainer}>
-        <TouchableOpacity
+        <Pressable
           onPress={() => toggleSection(item.label)}
           style={styles.sectionHeader}
         >
           <Text style={styles.sectionTitle}>{item.label}</Text>
-          <TouchableOpacity
+          <Pressable
             style={{
               alignSelf: "flex-end",
               margin: 10,
@@ -48,8 +42,8 @@ const Sidebar = ({ data }: { data: INavigation[] }) => {
               size={20}
               color={isExpanded ? "gray" : "black"}
             />
-          </TouchableOpacity>
-        </TouchableOpacity>
+          </Pressable>
+        </Pressable>
         {isExpanded && (
           <View style={styles.subsectionContainer}>
             {item.list.map((subsection: any) => (

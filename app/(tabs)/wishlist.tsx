@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between", // Ensure the two cards are spaced evenly
   },
   cardContainer: {
-    flex: 1,
+    // flex: 1,
     margin: 8, // Add some margin between cards
     maxWidth: width / 2 - 24, // Ensure the card takes up half the width with some padding
   },
