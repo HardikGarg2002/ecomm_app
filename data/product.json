@@ -1,0 +1,91 @@
+[
+    {
+        "_id": "668833586afe92c914e33cb3",
+        "slug": "ferrero-rocher-16pcs-box",
+        "sku": "ADDON_3",
+        "sales_discontinuation_date": "09/09/2024",
+        "title": "Ferrero Choclates",
+        "default_price": 200,
+        "list_price": 200,
+        "display_tags": [
+            "EXPRESS_DELIVERY"
+        ],
+        "inventory": {
+            "quantity_on_hand": "5000",
+            "quantity_available": "1000"
+        },
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0741/2259/2535/products/ferrero-rocher-16pcs-box_1_39752752-a300-44f1-b74a-b80f4a836505_200x.jpg?v=1689580547&width=2000&height=2000&crop=center"
+        ]
+    },
+    {
+        "_id": "668833586afe92c914e33cc2",
+        "slug": "shubham",
+        "sku": "ADDON_3",
+        "sales_discontinuation_date": "09/09/2024",
+        "title": "shubham",
+        "default_price": 200,
+        "list_price": 200,
+        "display_tags": [
+            "HOT_DEAL"
+        ],
+        "inventory": {
+            "quantity_on_hand": "5000",
+            "quantity_available": "1000"
+        },
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0741/2259/2535/products/ferrero-rocher-16pcs-box_1_39752752-a300-44f1-b74a-b80f4a836505_200x.jpg?v=1689580547&width=2000&height=2000&crop=center"
+        ]
+    },
+    {
+        "_id": "668873586afe92c914e43cb2",
+        "slug": "fronis",
+        "sku": "ADDON_3",
+        "sales_discontinuation_date": "09/09/2024",
+        "title": "Fronis",
+        "default_price": 200,
+        "list_price": 200,
+        "display_tags": [],
+        "inventory": {
+            "quantity_on_hand": "5000",
+            "quantity_available": "1000"
+        },
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0741/2259/2535/products/ferrero-rocher-16pcs-box_1_39752752-a300-44f1-b74a-b80f4a836505_200x.jpg?v=1689580547&width=2000&height=2000&crop=center"
+        ]
+    },
+    {
+        "_id": "666833586afe92c914e34bb2",
+        "slug": "anujax",
+        "sku": "ADDON_3",
+        "sales_discontinuation_date": "09/09/2024",
+        "title": "anujax",
+        "default_price": 200,
+        "list_price": 180,
+        "display_tags": [],
+        "inventory": {
+            "quantity_on_hand": "5000",
+            "quantity_available": "1000"
+        },
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0741/2259/2535/products/ferrero-rocher-16pcs-box_1_39752752-a300-44f1-b74a-b80f4a836505_200x.jpg?v=1689580547&width=2000&height=2000&crop=center"
+        ]
+    },
+    {
+        "_id": "668833586afd82c914e33cb2",
+        "slug": "Hardik",
+        "sku": "ADDON_3",
+        "sales_discontinuation_date": "09/09/2024",
+        "title": "Ferrero Choclates",
+        "default_price": 200,
+        "list_price": 200,
+        "display_tags": [],
+        "inventory": {
+            "quantity_on_hand": "5000",
+            "quantity_available": "1000"
+        },
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0741/2259/2535/products/ferrero-rocher-16pcs-box_1_39752752-a300-44f1-b74a-b80f4a836505_200x.jpg?v=1689580547&width=2000&height=2000&crop=center"
+        ]
+    }
+]
