@@ -45,6 +45,7 @@ const ServiceBenefits = () => {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 8,
     padding: 8,
     backgroundColor: GlobalColors.secondary.default, // Replace with your secondary background color
   },

@@ -3,7 +3,7 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity,
+  Pressable,
   StyleSheet,
   SafeAreaView,
   Modal,
@@ -14,6 +14,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Sidebar from "../navigation/Sidebar";
 import Sidebardata from "../../data/navigation.json";
 import SearchBar from "../home/SearchBar";
+import { GlobalColors } from "@/constants/Colors";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -34,12 +35,9 @@ const Header = () => {
         >
           <View style={styles.modalOverlay}>
             <View style={styles.sidebarContainer}>
-              <TouchableOpacity
-                style={styles.closeIcon}
-                onPress={toggleSidebar}
-              >
+              <Pressable style={styles.closeIcon} onPress={toggleSidebar}>
                 <Ionicons name="close-outline" size={22} color="grey" />
-              </TouchableOpacity>
+              </Pressable>
               <Sidebar data={Sidebardata} />
             </View>
           </View>
@@ -48,9 +46,13 @@ const Header = () => {
 
       {/* Logo and Hamburger Menu Icon */}
       <View style={styles.logoContainer}>
-        <TouchableOpacity style={styles.menuIcon} onPress={toggleSidebar}>
-          <Octicons name="three-bars" size={22} color="green" />
-        </TouchableOpacity>
+        <Pressable style={styles.menuIcon} onPress={toggleSidebar}>
+          <Octicons
+            name="three-bars"
+            size={22}
+            color={GlobalColors.primary.default}
+          />
+        </Pressable>
         <Image
           source={{
             uri: "https://itpl-fp-ui-dev.up.railway.app/_next/image?url=https%3A%2F%2Fik.imagekit.io%2Fyf2uzrdpa%2Ffnp-ui%2Fother%2FFNP_QA.webp%3FupdatedAt%3D1716542631820&w=256&q=75",
@@ -60,12 +62,16 @@ const Header = () => {
       </View>
       <SearchBar />
       {/* Cart Icon with Badge */}
-      <TouchableOpacity style={styles.cartContainer}>
-        <Ionicons name="bag-outline" size={24} color="green" />
+      <Pressable style={styles.cartContainer}>
+        <Ionicons
+          name="bag-outline"
+          size={24}
+          color={GlobalColors.primary.default}
+        />
         <View style={styles.cartBadge}>
           <Text style={styles.cartBadgeText}>2</Text>
         </View>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 };

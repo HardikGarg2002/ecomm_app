@@ -48,13 +48,11 @@ const BannerCarousel = () => {
   );
 };
 
-const bannerHeight = 140; // Calculate height based on the aspect ratio
+const bannerHeight = 145; // Calculate height based on the aspect ratio
 
 const styles = StyleSheet.create({
   bannerContainer: {
-    marginVertical: 20,
-    marginTop: 25,
-    width: width,
+    width,
     alignItems: "center",
     justifyContent: "center",
     // borderRadius: 30,
@@ -62,7 +60,7 @@ const styles = StyleSheet.create({
   },
   bannerImage: {
     height: bannerHeight, // Dynamically set height based on the aspect ratio
-    width: "95%", // Or you can adjust based on your design preference
+    width: "94%", // Or you can adjust based on your design preference
     resizeMode: "cover", // Ensure the image fits within the container
     borderRadius: 20, // Apply borderRadius to the image
   },
