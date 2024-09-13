@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 // import Icon from "./Icon";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { GlobalColors } from "@/constants/Colors";
 
 enum BadgeType {
   FREE_DELIVERY = "Free Delivery",
@@ -27,14 +28,14 @@ const badgeList = {
     label: "Hot Deal",
     icon: "fire",
     style: {
-      color: "#E2AD26",
+      color: GlobalColors.secondary.foreground,
       fontWeight: "bold",
     },
     containerStyle: {
-      backgroundColor: "#7C80340F", // Example background color
+      backgroundColor: GlobalColors.secondary.default,
     },
     iconStyle: {
-      color: "#E2AD26",
+      color: GlobalColors.secondary.foreground,
     },
   },
   [BadgeType.BEST_SELLER]: {
@@ -44,7 +45,7 @@ const badgeList = {
       color: "yellow",
     },
     containerStyle: {
-      backgroundColor: "#fff9d1", // Example background color
+      backgroundColor: "#fff9d1",
     },
     iconStyle: {
       color: "#E2AD26",
@@ -57,7 +58,7 @@ const badgeList = {
       color: "green",
     },
     containerStyle: {
-      backgroundColor: "#d1ffd1", // Example background color
+      backgroundColor: "#d1ffd1",
     },
     iconStyle: {
       color: "green",
@@ -66,18 +67,16 @@ const badgeList = {
 };
 
 export default function ProductBadge({ badge }: { badge?: BadgeType }) {
-  return badge ? (
+  if (!badge) return null;
+  const iconColor = badgeList[badge].iconStyle.color;
+  return (
     <View style={[styles.container, badgeList[badge].containerStyle]}>
-      <FontAwesome6
-        name={badgeList[badge].icon}
-        size={22}
-        color={badgeList[badge].iconStyle}
-      />
+      <FontAwesome6 name={badgeList[badge].icon} size={16} color={iconColor} />
       <Text style={[styles.label, badgeList[badge].style]}>
         {badgeList[badge].label}
       </Text>
     </View>
-  ) : null;
+  );
 }
 
 const styles = StyleSheet.create({
