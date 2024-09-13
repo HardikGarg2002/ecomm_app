@@ -1,13 +1,13 @@
 import React from "react";
-import { View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { View, TextInput, StyleSheet, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const SearchBar = ({ onSearchPress, ...props }: any) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onSearchPress} style={styles.iconContainer}>
+      <Pressable onPress={onSearchPress} style={styles.iconContainer}>
         <Icon name="search" size={20} color="#999999" />
-      </TouchableOpacity>
+      </Pressable>
       <TextInput
         style={styles.searchBar}
         placeholder="What are you looking for ?"

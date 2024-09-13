@@ -2,7 +2,7 @@ import BannerCarousel from "@/components/home/Banner";
 import ShopByCategory from "@/components/home/Categories";
 import ProductCard from "@/components/product/ProductCard";
 import ServiceBenefits from "@/components/home/ServiceBenefits";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -10,28 +10,35 @@ import {
   View,
   Image,
   StyleSheet,
+  Dimensions,
 } from "react-native";
 import Header from "@/components/common/Header";
 import SubHeader from "@/components/common/SubHeader";
 import { ProductCarousel } from "@/components/product/ProductCarousel";
 import { getOccasionsForHomePage } from "@/lib/categories";
+import { IProduct } from "@/lib/type/product";
 
+const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
   section: {
-    marginVertical: 14,
+    marginTop: 14,
     paddingLeft: 14,
+    width: width,
+  },
+  sectionSeprator: {
+    marginVertical: 16,
   },
   header: {
-    flexDirection: "row", // Specify 'row' to ensure type safety
-    alignItems: "center", // Specify valid FlexAlignType
+    flexDirection: "row",
+    alignItems: "center",
     padding: 10,
-    justifyContent: "space-between", // Valid FlexJustifyType
+    justifyContent: "space-between",
   },
   logo: { width: 50, height: 50 },
 
   icon: { marginHorizontal: 5 },
   banner: {
-    alignItems: "center", // Explicitly type 'center'
+    alignItems: "center",
     marginVertical: 20,
   },
   bannerImage: { width: "100%", height: 200 },
@@ -44,11 +51,11 @@ const styles = StyleSheet.create({
   },
   statText: { fontSize: 16 },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
     lineHeight: 24,
     marginBottom: 8,
-    // marginHorizontal: 14,
+    marginHorizontal: 2,
   },
   footerBanner: {
     height: 125,
@@ -61,6 +68,37 @@ const styles = StyleSheet.create({
 
 const App = () => {
   const occasionCategory = getOccasionsForHomePage();
+  // const bestSellerProducts: IProduct[] = [];
+  const [bestSellerProducts, setBestSellerProducts] = React.useState<
+    IProduct[]
+  >([]);
+  const [valentineDayProducts, setValentineDayProducts] = React.useState<
+    IProduct[]
+  >([]);
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        // Fetch for Valentine Day Category
+        const ValentineDayCategory = await fetch(
+          "https://itpl-fp-dev.up.railway.app/api/consumer/categories/gifts/anniversary"
+        );
+        const valentineDay = await ValentineDayCategory.json();
+        setValentineDayProducts(valentineDay.products);
+
+        // Fetch for Best Seller Category
+        const bestSellerCategory = await fetch(
+          "https://itpl-fp-dev.up.railway.app/api/consumer/categories/chocolates/birthday"
+        );
+        const bestSellerCategoryData = await bestSellerCategory.json();
+        setBestSellerProducts(bestSellerCategoryData.products);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView stickyHeaderIndices={[1]}>
@@ -73,36 +111,40 @@ const App = () => {
           <ShopByCategory />
           <ShopByCategory inputCategory={occasionCategory} />
         </View>
+        <View style={styles.sectionSeprator} />
         <BannerCarousel />
+        <View style={styles.sectionSeprator} />
         <Text
           style={{
-            fontSize: 18,
-            fontWeight: "bold",
-            marginVertical: 10,
-            marginBottom: 14,
-            lineHeight: 24,
             textAlign: "center",
+            ...styles.sectionTitle,
           }}
         >
           KSA's #1 Florist & Gift Shop for Cakes, Hampers, Flower Delivery &
           More
         </Text>
+
         <ServiceBenefits />
+        <View style={styles.sectionSeprator} />
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>💕 Valentine's Day Gift </Text>
+        </View>
+        <ProductCarousel products={valentineDayProducts} />
+        <View style={styles.sectionSeprator} />
 
-        <Text style={styles.sectionTitle}> 💕 Valentine's Day Gift </Text>
-        <ProductCarousel />
-        {/* Shop by Occasion */}
-        <Text style={styles.sectionTitle}>Shop by Occassion </Text>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Shop by Occassion </Text>
+          <ShopByCategory inputCategory={occasionCategory} />
+        </View>
 
-        <ShopByCategory inputCategory={occasionCategory} />
+        <View style={styles.sectionSeprator} />
 
         {/* Best Seller Gifts */}
         <View
           style={{
             flexDirection: "row",
             alignContent: "center",
-            marginLeft: 10,
-            marginTop: 10,
+            ...styles.section,
           }}
         >
           <Image
@@ -112,12 +154,11 @@ const App = () => {
             style={{
               width: 28,
               height: 28,
-              marginTop: 14,
             }}
           />
           <Text style={styles.sectionTitle}>Best Seller Gifts</Text>
         </View>
-        <ProductCarousel />
+        <ProductCarousel products={bestSellerProducts} />
         <Image
           source={{
             uri: "https://ik.imagekit.io/yf2uzrdpa/fnp-ui/other/image%2021.png?updatedAt=1725557652396",
