@@ -8,10 +8,16 @@ import {
   Dimensions,
   Pressable,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "@/lib/type/navigation";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 const { width } = Dimensions.get("window");
 const ShopByCategory = ({ inputCategory }: any) => {
   const [categories, setCategories] = useState([]);
+
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     // Fetch categories from the backend when the component mounts
@@ -32,7 +38,12 @@ const ShopByCategory = ({ inputCategory }: any) => {
 
   // Function to render each category item
   const renderCategoryItem = ({ item }: any) => (
-    <Pressable style={styles.categoryItem}>
+    <Pressable
+      style={styles.categoryItem}
+      onPress={() => {
+        navigation.navigate("ProductListing", { categorySlug: item.slug });
+      }}
+    >
       <Image
         source={{
           uri:
