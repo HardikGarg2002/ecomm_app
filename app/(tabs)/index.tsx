@@ -11,12 +11,17 @@ import {
   Image,
   StyleSheet,
   Dimensions,
+  Pressable,
 } from "react-native";
 import Header from "@/components/common/Header";
 import SubHeader from "@/components/common/SubHeader";
 import { ProductCarousel } from "@/components/product/ProductCarousel";
 import { getOccasionsForHomePage } from "@/lib/categories";
 import { IProduct } from "@/lib/type/product";
+import { GlobalColors } from "@/constants/Colors";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
+import { RootStackParamList } from "@/lib/type/navigation";
 
 const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
@@ -75,6 +80,9 @@ const App = () => {
   const [valentineDayProducts, setValentineDayProducts] = React.useState<
     IProduct[]
   >([]);
+
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -127,7 +135,26 @@ const App = () => {
         <ServiceBenefits />
         <View style={styles.sectionSeprator} />
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>💕 Valentine's Day Gift </Text>
+          <View style={{ ...styles.header, padding: 0, paddingHorizontal: 2 }}>
+            <Text style={styles.sectionTitle}>💕 Valentine's Day Gift </Text>
+            <Pressable
+              onPress={() => {
+                navigation.navigate("ProductListing", {
+                  categorySlug: "gifts/anniversary",
+                });
+              }}
+            >
+              <Text
+                style={{
+                  ...styles.sectionTitle,
+                  color: GlobalColors.primary.default,
+                  paddingRight: 6,
+                }}
+              >
+                view all
+              </Text>
+            </Pressable>
+          </View>
         </View>
         <ProductCarousel products={valentineDayProducts} />
         <View style={styles.sectionSeprator} />

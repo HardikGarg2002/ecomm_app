@@ -4,6 +4,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { IProduct } from "@/lib/type/product";
 import ProductBadge from "./ProductCardBadge";
 import { addToWishlist, getWishlist, removeFromWishlist } from "@/lib/wishlist";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "@/lib/type/navigation";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 enum BadgeType {
   FREE_DELIVERY = "Free Delivery",
@@ -14,6 +17,8 @@ enum BadgeType {
 const { width } = Dimensions.get("window");
 
 export const ProductCard = ({ product }: { product: IProduct }) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [isInWishList, setIsInWishList] = useState(false);
 
   useEffect(() => {
@@ -98,7 +103,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
       </Pressable>
       <Pressable
         onPress={() => {
-          // Navigate to product details
+          navigation.navigate("ProductDetail", { product });
         }}
         style={{
           flexDirection: "column",
