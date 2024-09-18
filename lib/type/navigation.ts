@@ -1,3 +1,5 @@
+import { IProduct } from "./product";
+
 export interface INavigation {
   _id?: string;
   label: string;
@@ -17,3 +19,11 @@ export interface INavigationItem {
   label: string;
   url: string;
 }
+
+// src/types/navigation.ts (or wherever you prefer to place it)
+export type RootStackParamList = {
+  ProductDetail: { product: IProduct };
+  MainTabs: any;
+  ProductListing: { categorySlug: any };
+  // Other routes can be added here
+};
